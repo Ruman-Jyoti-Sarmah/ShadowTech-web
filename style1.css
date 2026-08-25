@@ -84,11 +84,12 @@ h3 {
 /* --- Header & Navigation --- */
 .main-header {
     background: var(--secondary-color);
-    padding: 15px 0;
+    padding: 14px 0;
     position: sticky;
     top: 0;
     z-index: 100;
-    border-bottom: 1px solid var(--dark-color);
+    border-bottom: 1px solid rgba(76, 175, 80, 0.16);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.04), 0 10px 30px -12px rgba(0, 0, 0, 0.6);
 }
 
 .main-header .container {
@@ -98,24 +99,33 @@ h3 {
 }
 
 .brand {
-    font-size: 1.5em;
-    font-weight: bold;
-    color: var(--primary-color);
-    text-align: left;
     display: flex;
     align-items: center;
+    gap: 12px;
+}
+
+.brand-name {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.35rem;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    line-height: 1;
+    white-space: nowrap;
 }
 
 .brand-logo {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    margin-right: 10px;
-    object-fit: cover;
+    height: 46px;
+    width: auto;
+    display: block;
+    flex-shrink: 0;
 }
 
 .shadow-part {
-    color: white;
+    color: #ffffff;
+}
+
+.techx-part {
+    color: var(--primary-color);
 }
 
 .logo {
@@ -134,7 +144,8 @@ h3 {
     color: var(--text-light);
     text-decoration: none;
     margin-left: 30px;
-    font-weight: 300;
+    font-weight: 500;
+    letter-spacing: 0.02em;
     transition: color 0.3s ease;
 }
 
