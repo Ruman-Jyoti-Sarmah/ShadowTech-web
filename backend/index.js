@@ -21,7 +21,22 @@ const corsOptions = {
     // Allow requests with no origin (mobile apps, etc.)
     if (!origin) return callback(null, true);
 
-    if (allowedOrigins.includes(origin.trim())) {
+    const trimmedOrigin = origin.trim().toLowerCase();
+
+    // Allow any local development origin (localhost / 127.0.0.1 on any port)
+    let hostname = null;
+    try {
+      hostname = new URL(trimmedOrigin).hostname;
+    } catch (_) {
+      hostname = null;
+    }
+
+    if (
+      allowedOrigins.map(o => o.trim().toLowerCase()).includes(trimmedOrigin) ||
+      hostname === 'localhost' ||
+      hostname === '127.0.0.1' ||
+      hostname === '[::1]'
+    ) {
       callback(null, true);
     } else {
       callback(new Error('Not allowed by CORS'));

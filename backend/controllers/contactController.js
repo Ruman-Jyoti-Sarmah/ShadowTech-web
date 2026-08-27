@@ -1,5 +1,6 @@
 import { validationResult } from 'express-validator';
 import Contact from '../models/Contact.js';
+import { sendContactEmail } from '../services/emailService.js';
 
 // Get all contacts
 export const getContacts = async (req, res) => {
@@ -62,16 +63,34 @@ export const createContact = async (req, res) => {
 
     const savedContact = await newContact.save();
 
+    // Send notification email to the admin inbox (best-effort so a
+    // temporary email failure doesn't block storing the submission).
+    let emailSent = false;
+    let emailError = null;
+    try {
+      await sendContactEmail({ name, email, subject, message, phone });
+      emailSent = true;
+    } catch (error) {
+      // Log the failure clearly in the server console for debugging,
+      // but still acknowledge the submission was stored.
+      console.error('Failed to send contact email:', error);
+      emailError = error.message;
+    }
+
     res.status(201).json({
       success: true,
-      message: 'Contact form submitted successfully',
+      message: emailSent
+        ? 'Contact form submitted successfully'
+        : 'Your request was received, but the notification email could not be sent.',
       data: {
         id: savedContact._id,
         name: savedContact.name,
         email: savedContact.email,
         subject: savedContact.subject,
-        createdAt: savedContact.createdAt
-      }
+        createdAt: savedContact.createdAt,
+        emailSent
+      },
+      ...(emailError && { emailError })
     });
   } catch (error) {
     console.error('Error creating contact:', error);

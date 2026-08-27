@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const apiUrl = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
-        ? 'http://localhost:5000/contact'
-        : 'https://shadow-tech-backend.onrender.com/contact';
+        ? 'http://localhost:5000/api/contact'
+        : 'https://shadow-tech-backend.onrender.com/api/contact';
 
     const form = document.getElementById('contact-form');
     const messageElement = document.getElementById('form-message');
@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
             email: form.querySelector('#professional-email').value.trim(),
             subject: form.querySelector('#website-name').value.trim() || 'New Consultation Request',
             message: form.querySelector('#project-details').value.trim(),
-            phone_number: form.querySelector('#phone-number') ? form.querySelector('#phone-number').value.trim() : ''
+            phone: form.querySelector('#phone-number') ? form.querySelector('#phone-number').value.trim() : ''
         };
 
         // Basic client validation
