@@ -698,7 +698,42 @@ h3 {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 28px;
-    align-items: center;
+    align-items: stretch; /* equal-height cards */
+}
+
+/* Equal-height cards: push the CTA button to the bottom */
+.price-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.price-card .plan-btn {
+    margin-top: auto; /* aligns all GET STARTED buttons at the same height */
+    justify-content: center;
+}
+
+/* "MOST POPULAR" badge on the featured card */
+.plan-badge {
+    position: absolute;
+    top: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.16);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    color: #ffffff;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    padding: 6px 16px;
+    border-radius: 999px;
+    white-space: nowrap;
+}
+
+.price-card.featured {
+    position: relative; /* anchors .plan-badge */
+    overflow: hidden;   /* keeps the badge inside the rounded corners */
 }
 
 .price-card {
@@ -757,6 +792,22 @@ h3 {
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
+}
+
+/* Secondary USD price shown inline under each INR price */
+.price-usd {
+    display: block;
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-top: 6px;
+    opacity: 0.7;
+    color: var(--ink-soft);
+}
+
+/* USD text on the featured gradient card stays legible */
+.price-card.featured .price-usd {
+    opacity: 0.85;
+    color: #ffffff;
 }
 
 .price-card.featured .price-tag {
