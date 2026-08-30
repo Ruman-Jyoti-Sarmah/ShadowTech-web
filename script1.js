@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //   publicKey  -> EmailJS Dashboard > Account > API Keys (Public Key)
     const EMAILJS_CONFIG = {
         serviceId: 'service_ntjejqp',
-        templateId: 'gi253co',
+        templateId: 'template_szfvkef',
         publicKey: 'pVOMsG5Rfc_VcdpA5'
     };
 
@@ -98,22 +98,24 @@ document.addEventListener('DOMContentLoaded', () => {
             submitButton.textContent = 'Launch Consultation';
         };
 
-        // Collect form data from the known IDs
+        // Collect form data — keys MUST match the variables used in the
+        // EmailJS template: {{name}}, {{email}}, {{phone}}, {{message}}, {{time}}
+        const websiteName = form.querySelector('#website-name').value.trim();
         const formData = {
-            full_name: form.querySelector('#full-name').value.trim(),
+            name: form.querySelector('#full-name').value.trim(),
             email: form.querySelector('#professional-email').value.trim(),
-            project_name: form.querySelector('#website-name').value.trim(),
             phone: form.querySelector('#phone-number') ? form.querySelector('#phone-number').value.trim() : '',
-            project_details: form.querySelector('#project-details').value.trim(),
-            subject: 'New ShadowTechX Project Enquiry'
+            message: (websiteName ? 'Website/App: ' + websiteName + '\n\n' : '') +
+                     form.querySelector('#project-details').value.trim(),
+            time: new Date().toLocaleString()
         };
 
         // Client-side validation
         const missing = [];
-        if (!formData.full_name) missing.push('Full Name');
+        if (!formData.name) missing.push('Full Name');
         if (!formData.email) missing.push('Professional Email');
-        if (!formData.project_name) missing.push('Website / Mobile App name');
-        if (!formData.project_details) missing.push('Project Details');
+        if (!websiteName) missing.push('Website / Mobile App name');
+        if (!formData.message) missing.push('Project Details');
 
         if (missing.length > 0) {
             showMessage('Please fill in required fields: ' + missing.join(', ') + '.', 'error');
@@ -154,12 +156,19 @@ document.addEventListener('DOMContentLoaded', () => {
         submitButton.disabled = true;
         submitButton.textContent = 'Sending...';
 
+        // --- TEMPORARY DEBUG LOGGING (remove once the form works) ---
+        console.log('[EmailJS DEBUG] serviceId  =', JSON.stringify(EMAILJS_CONFIG.serviceId));
+        console.log('[EmailJS DEBUG] templateId =', JSON.stringify(EMAILJS_CONFIG.templateId));
+        console.log('[EmailJS DEBUG] publicKey present =', Boolean(EMAILJS_CONFIG.publicKey), '(length:', (EMAILJS_CONFIG.publicKey || '').length + ')');
+        console.log('[EmailJS DEBUG] template param keys =', Object.keys(formData));
+        console.log('[EmailJS DEBUG] EmailJS SDK version =', (emailjs && emailjs.version) ? emailjs.version : 'unknown');
+
         try {
             await emailjs.send(
-                EMAILJS_CONFIG.serviceId,
-                EMAILJS_CONFIG.templateId,
-                formData,
-                { publicKey: EMAILJS_CONFIG.publicKey }
+                EMAILJS_CONFIG.serviceId,   // arg 1: serviceId
+                EMAILJS_CONFIG.templateId,  // arg 2: templateId
+                formData,                   // arg 3: templateParams
+                { publicKey: EMAILJS_CONFIG.publicKey } // arg 4: options
             );
 
             submitButton.textContent = 'Consultation Request Sent ✓';
@@ -168,8 +177,14 @@ document.addEventListener('DOMContentLoaded', () => {
             if (window.ShadowPopup) window.ShadowPopup.open();
         } catch (err) {
             console.error('EmailJS send failed:', err);
+            // Surface the real reason EmailJS rejected the request so it
+            // can be debugged (404 = wrong Service/Template ID, 401/403 =
+            // wrong Public Key or service not connected, 429 = quota).
+            const reason = (err && (err.text || err.message)) || 'Unknown error';
+            const status = err && err.status ? ' (status ' + err.status + ')' : '';
+            console.error('EmailJS error details:', reason + status);
             submitButton.textContent = 'Try Again';
-            showMessage('Something went wrong while submitting your request. Please try again.', 'error');
+            showMessage('Something went wrong while submitting your request. ' + reason + status, 'error');
         } finally {
             // Keep the success/error label visible briefly, then restore normal state
             setTimeout(restoreButton, 2500);
