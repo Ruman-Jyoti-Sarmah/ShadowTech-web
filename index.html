@@ -3,25 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shadow Tech</title>
-    <link rel="stylesheet" href="style.css">
-    <style>
-        @media screen {
-            
-        }
-    </style>
+    <title>ShadowTech | Next-Gen Digital Engineering</title>
+    <link rel="stylesheet" href="style.css?v=3">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    
+
+    <!-- Animated Purple Background -->
+    <div class="purple-bg" aria-hidden="true"></div>
+
+    <!-- Particle Background -->
     <div id="particles-js"></div>
 
+    <!-- Cinematic Overlay -->
+    <div class="cinematic-overlay"></div>
+
+    <!-- Main Content -->
     <div class="content">
-        <h1>Welcome to ShadowTechx World</h1>
-        <p>Built with cutting-edge tech. Engineered for speed.</p>
-        <a href="index1.html" class="cta-button">EXPLORE THE SHADOW</a>
+        <div class="logo-container">
+            <img src="images/shadow-techx-icon.png" alt="ShadowTechX" class="brand-logo-anim">
+        </div>
+        <p class="eyebrow">Welcome to</p>
+        <h1 class="main-title">
+            <span class="shadow-text">SHADOW</span><span class="techx-text">TECHX</span>
+        </h1>
+        <p class="tagline">Built with cutting-edge tech. Engineered for speed.</p>
+        <a href="index1.html" class="cta-button">
+            <span>EXPLORE THE SHADOW</span>
+            <i class="fas fa-arrow-right"></i>
+        </a>
     </div>
 
-    
+    <!-- Scroll Indicator -->
+    <div class="scroll-indicator">
+        <div class="scroll-dot"></div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <script src="script.js"></script>
 </body>

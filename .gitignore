@@ -82,6 +82,11 @@ public
 tmp/
 temp/
 
+# Legacy Node.js backend — kept locally for reference only.
+# The website is fully static (GitHub Pages + EmailJS) and must never
+# depend on it. See README.md for the current architecture.
+backend/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

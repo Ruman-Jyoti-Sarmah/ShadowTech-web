@@ -1,294 +1,454 @@
-/* body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    background-color: #121212; 
-    color: #ffffff; 
-} */
+/* ============================================================
+   SHADOWTECHX — Landing / Cinematic Entry (light theme)
+   Premium white + electric-blue styling for index.html.
+   ============================================================ */
 
-/* Make the particles div cover the entire viewport and position it behind the content */
-/* #particles-js {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-color: #121212;
-    z-index: 1; 
-} */
-
-/* Style the content div and position it over the particles */
-/* .content {
-    position: relative; 
-    z-index: 2; 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    height: 100vh;
-    padding: 40px 40px;
+:root {
+    --bg: #fbfcfe;
+    --ink: #111827;
+    --muted: #5b6b83;
+    --blue: #a855f7;
+    --sky: #d8b4fe;
+    --grad: linear-gradient(135deg, #2563eb, #7c3aed);
+    --text-grad: linear-gradient(90deg, #60a5fa, #c084fc);
+    --font-inter: 'Inter', sans-serif;
 }
-
-h1 {
-    font-size: 4em;
-    margin-bottom: 0.5em;
-    font-weight: 900;
-    text-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
-    max-width: 100%;
-}
-
-p {
-    font-size: 1.5em;
-    margin-bottom: 2em;
-    color: #00e0ff; 
-}
-
-.cta-button {
-    background-color: #00e0ff;
-    color: #121212;
-    padding: 15px 30px;
-    text-decoration: none;
-    font-weight: bold;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-    box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
-}
-
-.cta-button:hover {
-    background-color: #0096ff;
-} */
-
-/* Responsive Design */
-/* @media (max-width: 1200px) {
-    h1 {
-        font-size: 5em;
-    }
-}
-
-@media (max-width: 992px) {
-    h1 {
-        font-size: 4em;
-    }
-}
-
-@media (max-width: 768px) {
-    h1 {
-        font-size: 2.8em;
-    }
-    p {
-        font-size: 1.2em;
-    }
-    .cta-button {
-        padding: 12px 24px;
-        font-size: 1em;
-    }
-}
-
-@media (max-width: 576px) {
-    h1 {
-        font-size: 2.2em;
-    }
-}
-
-@media (max-width: 480px) {
-    h1 {
-        font-size: 1.5em;
-        line-height: 1.1;
-        max-width: 90vw;
-    }
-    p {
-        font-size: 0.9em;
-        margin-bottom: 1.5em;
-    }
-    .cta-button {
-        padding: 8px 16px;
-        font-size: 0.8em;
-    }
-    .content {
-        padding: 10px 10px;
-    }
-}
-
-@media (max-width: 360px) {
-    h1 {
-        font-size: 0.9em;
-        line-height: 1.1;
-        max-width: 75vw;
-    }
-    p {
-        font-size: 0.6em;
-    }
-}
-
-@media (max-width: 320px) {
-    h1 {
-        font-size: 0.8em;
-        max-width: 70vw;
-    }
-    p {
-        font-size: 0.55em;
-    }
-} */
-
-/* Large Desktops */
-/* @media screen and (min-width: 1200px) {
-    h1 {
-        font-size: 6em;
-    }
-    p {
-        font-size: 2em;
-    }
-    .cta-button {
-        padding: 20px 40px;
-    }
-} */
-
-/* Tablets and Small Laptops */
-/* @media (max-width: 1024px) {
-    h1 {
-        font-size: 4.5em;
-    }
-    p {
-        font-size: 1.6em;
-    }
-    .cta-button {
-        padding: 16px 32px;
-    }
-} */
-
-/* Tablet Landscape (481px to 768px) */
-/* @media screen and (min-width: 481px) and (max-width: 768px) {
-    h1 {
-        font-size: 3.2em;
-        text-transform: uppercase;
-    }
-    p {
-        font-size: 1.3em;
-        text-transform: uppercase;
-    }
-    .cta-button {
-        font-size: 1.1em;
-        text-transform: uppercase;
-    }
-} */
-
-
-/* =========================
-   Global Styles
-========================= */
 
 * {
     box-sizing: border-box;
 }
 
-body {
+html, body {
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
-    background-color: #121212;
-    color: #ffffff;
+    width: 100%;
+    height: 100%;
     overflow-x: hidden;
 }
 
-/* =========================
-   Particles Background
-========================= */
+body {
+    font-family: var(--font-inter);
+    background:
+        radial-gradient(90% 70% at 50% -10%, #eaf1ff 0%, rgba(251, 252, 254, 0) 60%),
+        var(--bg);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+::selection {
+    background: rgba(168, 85, 247, 0.35);
+}
+
+/* ============================================================
+   Animated Purple Background (index.html)
+   Deep violet base with drifting purple glow blobs + slow hue shift.
+   ============================================================ */
+
+.purple-bg {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    /* Rich purple base — three soft glows that drift and pulse */
+    background-color: #1b0836;
+}
+
+.purple-bg::before,
+.purple-bg::after {
+    content: "";
+    position: absolute;
+    inset: -30%; /* oversized so the blobs never reveal a hard edge */
+    background:
+        radial-gradient(42% 42% at 25% 30%, rgba(124, 58, 237, 0.75) 0%, rgba(124, 58, 237, 0) 70%),
+        radial-gradient(38% 38% at 75% 25%, rgba(192, 38, 211, 0.55) 0%, rgba(192, 38, 211, 0) 70%),
+        radial-gradient(45% 45% at 60% 75%, rgba(99, 102, 241, 0.6) 0%, rgba(99, 102, 241, 0) 70%),
+        radial-gradient(35% 35% at 15% 80%, rgba(168, 85, 247, 0.5) 0%, rgba(168, 85, 247, 0) 70%);
+    animation: purple-drift 18s ease-in-out infinite alternate;
+    will-change: transform;
+}
+
+/* Second layer, drifting the opposite way and hue-shifting slowly
+   so the two glows interact and never loop in an obvious way */
+.purple-bg::after {
+    animation: purple-drift-hue 24s ease-in-out infinite alternate;
+    opacity: 0.8;
+}
+
+@keyframes purple-drift {
+    0% {
+        transform: translate(0, 0) rotate(0deg) scale(1);
+    }
+    50% {
+        transform: translate(6%, -5%) rotate(8deg) scale(1.12);
+    }
+    100% {
+        transform: translate(-5%, 6%) rotate(-6deg) scale(1.05);
+    }
+}
+
+@keyframes purple-drift-hue {
+    0% {
+        transform: translate(0, 0) scale(1);
+        filter: hue-rotate(0deg);
+    }
+    50% {
+        transform: translate(-6%, 4%) scale(1.15);
+        filter: hue-rotate(24deg);
+    }
+    100% {
+        transform: translate(5%, -6%) scale(1.02);
+        filter: hue-rotate(-18deg);
+    }
+}
+
+/* Body sits on the purple stage (index.html only uses this sheet) */
+body {
+    font-family: var(--font-inter);
+    background: var(--bg);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+:root {
+    --bg: #1b0836;
+    --ink: #f5f0ff;
+    --muted: #c4b5fd;
+    --blue: #a855f7;
+    --sky: #d8b4fe;
+    --grad: linear-gradient(135deg, #2563eb, #7c3aed);
+    --text-grad: linear-gradient(90deg, #60a5fa, #c084fc); /* brighter tints for dark bg */
+}
 
 #particles-js {
     position: fixed;
     inset: 0;
     width: 100%;
     height: 100%;
-    background-color: #121212;
     z-index: 1;
+    opacity: 0.9;
+    background: transparent;
 }
 
-/* =========================
+/* ============================================================
+   Cinematic Overlay — soft spotlight that focuses the centre
+   ============================================================ */
+
+.cinematic-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    background:
+        radial-gradient(ellipse 60% 46% at 50% 42%, rgba(27, 8, 54, 0) 0%, rgba(12, 3, 26, 0.55) 100%);
+    animation: overlay-in 1.8s ease forwards;
+}
+
+@keyframes overlay-in {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* ============================================================
    Main Content
-========================= */
+   ============================================================ */
 
 .content {
     position: relative;
-    z-index: 2;
-
+    z-index: 3;
     min-height: 100vh;
-    padding: 2rem 1rem;
-
+    padding: 2.5rem 1.5rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
     text-align: center;
 }
 
-/* =========================
-   Heading (RESPONSIVE FIX)
-========================= */
+/* Logo reveal */
+.logo-container {
+    opacity: 0;
+    transform: scale(0.92) translateY(14px);
+    animation: logo-in 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.55s forwards;
+    margin-bottom: 2rem;
+}
 
-h1 {
-    font-size: clamp(1.8rem, 6vw, 5.5rem);
-    line-height: 1.2;
-    margin-bottom: 0.5em;
+.brand-logo-anim {
+    height: clamp(64px, 9vw, 108px);
+    width: auto;
+    /* Native colours: black tile + white artwork pops on the purple stage */
+    filter: drop-shadow(0 10px 28px rgba(168, 85, 247, 0.45));
+    animation: float-logo 6s ease-in-out infinite;
+}
+
+@keyframes logo-in {
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+@keyframes float-logo {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-9px); }
+}
+
+/* Eyebrow — "Welcome to" lead-in (fluid, scales on every screen) */
+.eyebrow {
+    margin: 0 0 6px;
+    font-size: clamp(0.75rem, 2.6vw, 1.05rem);
+    font-weight: 600;
+    letter-spacing: 0.34em;
+    text-transform: uppercase;
+    color: var(--muted);
+    opacity: 0;
+    transform: translateY(18px);
+    animation: tagline-in 1s cubic-bezier(0.22, 1, 0.36, 1) 0.75s forwards;
+}
+
+/* Main title — fluid: shrinks smoothly with the viewport,
+   so "SHADOWTECHX" always fits without overflow */
+.main-title {
+    margin: 0;
+    font-size: clamp(2.1rem, 10.5vw, 6.8rem);
     font-weight: 900;
-
-    text-align: center;
-    max-width: 95vw;
-
-    /* Prevent broken words */
-    word-break: normal;
-    overflow-wrap: normal;
-    white-space: normal;
-
-    /* Tech glow */
-    text-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
+    letter-spacing: 0.04em;
+    line-height: 1.02;
+    white-space: nowrap;
+    opacity: 0;
+    transform: translateY(24px);
+    animation: title-in 1.1s cubic-bezier(0.22, 1, 0.36, 1) 0.9s forwards;
 }
 
-/* =========================
-   Paragraph
-========================= */
-
-p {
-    font-size: clamp(0.9rem, 2.5vw, 1.8rem);
-    margin-bottom: 2em;
-    max-width: 90vw;
-
-    color: #00e0ff;
-    line-height: 1.6;
+.shadow-text {
+    color: var(--ink);
 }
 
-/* =========================
-   Call To Action Button
-========================= */
+.techx-text {
+    background: var(--text-grad);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
 
+@keyframes title-in {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+/* Tagline */
+/* Tagline — fluid size, wraps beautifully on narrow screens */
+.tagline {
+    margin: 1rem 0 2.4rem;
+    font-size: clamp(0.82rem, 2.6vw, 1.2rem);
+    font-weight: 400;
+    letter-spacing: 0.13em;
+    line-height: 1.7;
+    text-wrap: balance;
+    text-transform: uppercase;
+    color: var(--muted);
+    opacity: 0;
+    transform: translateY(16px);
+    animation: tagline-in 1s cubic-bezier(0.22, 1, 0.36, 1) 1.35s forwards;
+}
+
+@keyframes tagline-in {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* CTA Button — clean, professional pill */
 .cta-button {
-    display: inline-block;
-
-    background-color: #00e0ff;
-    color: #121212;
-
-    padding: clamp(10px, 3vw, 18px) clamp(18px, 5vw, 40px);
-    font-size: clamp(0.8rem, 2.5vw, 1.1rem);
-
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    padding: clamp(13px, 2.2vw, 17px) clamp(24px, 4.5vw, 44px);
+    background: var(--grad);
+    border: none;
+    border-radius: 999px;
+    color: #ffffff;
+    font-size: clamp(0.8rem, 2.2vw, 0.98rem);
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
     text-decoration: none;
-    font-weight: bold;
-    border-radius: 6px;
+    position: relative;
+    cursor: pointer;
+    box-shadow: 0 16px 40px -14px rgba(168, 85, 247, 0.65);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    opacity: 0;
+    transform: translateY(16px);
+    animation: btn-in 1s cubic-bezier(0.22, 1, 0.36, 1) 1.75s forwards;
+}
 
-    box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
-    transition: all 0.3s ease;
+.cta-button i {
+    transition: transform 0.3s ease;
 }
 
 .cta-button:hover {
-    background-color: #0096ff;
-    box-shadow: 0 0 30px rgba(0, 150, 255, 0.7);
-    transform: translateY(-2px);
+    transform: translateY(-3px);
+    box-shadow: 0 22px 48px -14px rgba(217, 70, 239, 0.7);
 }
 
-/* =========================
-   Small Devices Fine-Tune
-========================= */
+.cta-button:hover i {
+    transform: translateX(5px);
+}
+
+.cta-button:focus-visible {
+    outline: 2px solid var(--sky);
+    outline-offset: 3px;
+}
+
+@keyframes btn-in {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Scroll indicator */
+.scroll-indicator {
+    position: fixed;
+    bottom: 26px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    height: 40px;
+    width: 22px;
+    border: 1px solid rgba(245, 240, 255, 0.4);
+    border-radius: 999px;
+    opacity: 0;
+    animation: indicator-in 1s ease 2.6s forwards;
+}
+
+.scroll-dot {
+    width: 4px;
+    height: 9px;
+    margin: 7px auto;
+    border-radius: 999px;
+    background: var(--blue);
+    animation: scroll-dot 2s ease-in-out infinite;
+}
+
+@keyframes indicator-in {
+    to { opacity: 1; }
+}
+
+@keyframes scroll-dot {
+    0%   { opacity: 0; transform: translateY(0); }
+    40%  { opacity: 1; }
+    100% { opacity: 0; transform: translateY(12px); }
+}
+
+/* ============================================================
+   Responsive — sensitive mobile scaling
+   ============================================================ */
+
+@media (max-width: 768px) {
+    .main-title {
+        white-space: normal;
+    }
+    .content {
+        padding: 2.5rem 1.25rem;
+    }
+    .brand-logo-anim {
+        height: clamp(56px, 12vw, 84px);
+    }
+}
+
+@media (max-width: 480px) {
+    .content {
+        padding: 2rem 1rem;
+    }
+    .main-title {
+        font-size: clamp(1.9rem, 12vw, 3.4rem);
+        letter-spacing: 0.03em;
+    }
+    .tagline {
+        font-size: clamp(0.8rem, 3vw, 0.95rem);
+        letter-spacing: 0.08em;
+        margin: 1rem 0 2rem;
+    }
+    .eyebrow {
+        font-size: clamp(0.68rem, 2.8vw, 0.82rem);
+        letter-spacing: 0.24em;
+    }
+    .cta-button {
+        padding: 13px 24px;
+        font-size: clamp(0.76rem, 2.8vw, 0.85rem);
+        letter-spacing: 0.08em;
+        max-width: 100%;
+        white-space: normal;
+        text-align: center;
+    }
+    .scroll-indicator {
+        display: none;
+    }
+}
 
 @media (max-width: 360px) {
     .content {
         padding: 1.5rem 0.75rem;
+    }
+    .main-title {
+        font-size: clamp(1.7rem, 10.5vw, 2.8rem);
+        letter-spacing: 0.02em;
+    }
+    .eyebrow {
+        font-size: 0.68rem;
+        letter-spacing: 0.2em;
+    }
+    .tagline {
+        font-size: 0.74rem;
+        letter-spacing: 0.04em;
+    }
+    .cta-button {
+        gap: 10px;
+        padding: 12px 18px;
+        font-size: 0.74rem;
+    }
+}
+
+@media (max-height: 480px) and (orientation: landscape) {
+    .content {
+        padding: 1.5rem 1rem;
+    }
+    .logo-container {
+        margin-bottom: 1rem;
+    }
+    .tagline {
+        margin: 0.8rem 0 1.4rem;
+    }
+    .scroll-indicator {
+        display: none;
+    }
+}
+
+/* ============================================================
+   Reduced Motion
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+    .logo-container,
+    .eyebrow,
+    .main-title,
+    .tagline,
+    .cta-button {
+        animation: none;
+        opacity: 1;
+        transform: none;
+    }
+    .brand-logo-anim,
+    .scroll-dot,
+    .purple-bg::before,
+    .purple-bg::after {
+        animation: none;
+    }
+    .scroll-indicator {
+        opacity: 1;
     }
 }

@@ -1,17 +1,19 @@
 // --- script.js ---
+// Landing page: premium particle background + subtle mouse parallax.
 
-/* Initialize Particles.js with a futuristic, connected grid configuration */
+/* Initialize Particles.js with a refined, connected network config.
+   Colours tuned for the light / professional theme. */
 particlesJS("particles-js", {
   "particles": {
     "number": {
-      "value": 80, // Number of particles
+      "value": 60,
       "density": {
         "enable": true,
-        "value_area": 800
+        "value_area": 900
       }
     },
     "color": {
-      "value": "#00e0ff" // Electric blue particles
+      "value": "#c084fc" // soft purple dots
     },
     "shape": {
       "type": "circle",
@@ -20,25 +22,25 @@ particlesJS("particles-js", {
       },
     },
     "opacity": {
-      "value": 0.5,
-      "random": false,
+      "value": 0.45,
+      "random": true,
     },
     "size": {
-      "value": 3,
+      "value": 2.2,
       "random": true,
     },
     "line_linked": {
       "enable": true,
-      "distance": 150, // Distance for lines to connect
-      "color": "#0096ff", // Connecting line color
-      "opacity": 0.4,
+      "distance": 150,
+      "color": "#a855f7",
+      "opacity": 0.18,
       "width": 1
     },
     "move": {
       "enable": true,
-      "speed": 2, // Slow, gentle movement
+      "speed": 0.7,
       "direction": "none",
-      "random": false,
+      "random": true,
       "straight": false,
       "out_mode": "out",
     }
@@ -48,11 +50,7 @@ particlesJS("particles-js", {
     "events": {
       "onhover": {
         "enable": true,
-        "mode": "grab" // Lines follow the mouse
-      },
-      "onclick": {
-        "enable": true,
-        "mode": "push"
+        "mode": "grab"
       },
       "resize": true
     },
@@ -60,11 +58,8 @@ particlesJS("particles-js", {
       "grab": {
         "distance": 140,
         "line_linked": {
-          "opacity": 1
+          "opacity": 0.45
         }
-      },
-      "push": {
-        "particles_nb": 4
       },
     }
   },
