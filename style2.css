@@ -354,6 +354,215 @@ body {
   color: var(--purple);
   box-shadow: none;
 }
+
+/* ============================================================
+   3-Dot Kebab Menu + Smooth Animated Dropdown (index2.html)
+   Each project card gets a three-dot button that, on click,
+   reveals a smoothly animated dropdown menu.
+   ============================================================ */
+.card-menu-wrapper {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  z-index: 10;
+}
+
+/* The three-dot button — three stacked dots */
+.card-menu-btn {
+  width: 36px;
+  height: 36px;
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0;
+  box-shadow: 0 2px 8px rgba(17, 24, 39, 0.08);
+  transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+  backdrop-filter: blur(6px);
+}
+
+.card-menu-btn:hover {
+  background: #ffffff;
+  border-color: var(--border-strong);
+  box-shadow: 0 6px 20px rgba(124, 58, 237, 0.18);
+  transform: scale(1.1);
+}
+
+.card-menu-btn:focus-visible {
+  outline: 2px solid var(--electric);
+  outline-offset: 2px;
+}
+
+/* The three dots */
+.card-menu-btn span {
+  display: block;
+  width: 5px;
+  height: 5px;
+  background: var(--ink-soft);
+  border-radius: 50%;
+  transition: background 0.25s ease;
+}
+
+.card-menu-btn:hover span {
+  background: var(--purple);
+}
+
+/* Dropdown container — hidden by default, smooth animated reveal */
+.card-dropdown {
+  position: absolute;
+  top: 44px;
+  right: 0;
+  min-width: 170px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: 0 14px 40px -16px rgba(11, 17, 32, 0.22);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 8px 6px;
+  margin: 0;
+  list-style: none;
+  /* Hidden state — collapsed and transparent */
+  opacity: 0;
+  transform: scaleY(0) translateY(-10px);
+  transform-origin: top right;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+/* Visible state — expanded and opaque */
+.card-menu-wrapper.open .card-dropdown {
+  opacity: 1;
+  transform: scaleY(1) translateY(0);
+  pointer-events: auto;
+}
+
+/* Rotate the button dots to indicate open state */
+.card-menu-btn.open {
+  transform: rotate(90deg) scale(1.05);
+}
+
+.card-menu-btn.open span:nth-child(1) {
+  background: var(--electric);
+}
+
+.card-menu-btn.open span:nth-child(2) {
+  background: var(--electric);
+}
+
+.card-menu-btn.open span:nth-child(3) {
+  background: var(--electric);
+}
+
+/* Dropdown items */
+.card-dropdown .dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  margin: 2px 4px;
+  border: none;
+  background: transparent;
+  color: var(--ink-soft);
+  font-size: 0.88rem;
+  font-weight: 500;
+  text-decoration: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+}
+
+.card-dropdown .dropdown-item:hover {
+  background: rgba(124, 58, 237, 0.08);
+  color: var(--purple);
+  transform: translateX(4px);
+}
+
+.card-dropdown .dropdown-item i {
+  font-size: 0.85rem;
+  width: 16px;
+  text-align: center;
+}
+
+.card-dropdown .share-item {
+  color: var(--ink-soft);
+}
+
+.card-dropdown .bookmark-item {
+  color: var(--ink-soft);
+}
+
+.card-dropdown .bookmark-item.bookmarked {
+  color: var(--purple);
+}
+
+/* Staggered item animation — each dropdown item fades in sequentially */
+.card-menu-wrapper.open .card-dropdown .dropdown-item {
+  animation: dropdownItemIn 0.35s ease both;
+}
+
+.card-menu-wrapper.open .card-dropdown .dropdown-item:nth-child(1) { animation-delay: 0.05s; }
+.card-menu-wrapper.open .card-dropdown .dropdown-item:nth-child(2) { animation-delay: 0.10s; }
+.card-menu-wrapper.open .card-dropdown .dropdown-item:nth-child(3) { animation-delay: 0.15s; }
+.card-menu-wrapper.open .card-dropdown .dropdown-item:nth-child(4) { animation-delay: 0.20s; }
+
+@keyframes dropdownItemIn {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .card-dropdown {
+    transition: none;
+  }
+
+  .card-menu-wrapper.open .card-dropdown {
+    opacity: 1;
+    transform: none;
+  }
+
+  .card-menu-wrapper.open .card-dropdown .dropdown-item {
+    animation: none;
+  }
+}
+
+/* Toast notification for Share / Bookmark feedback */
+.card-toast {
+  position: fixed;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(17, 24, 39, 0.92);
+  color: #ffffff;
+  padding: 12px 28px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  box-shadow: 0 10px 40px -12px rgba(17, 24, 39, 0.3);
+  z-index: 3000;
+  opacity: 0;
+  animation: toastIn 0.3s ease forwards 0.05s;
+  pointer-events: none;
+}
+
+@keyframes toastIn {
+  to { opacity: 1; }
+}
+
+
 /* --- Footer — dark navy for contrast --- */
 .main-footer {
   background: #0b1120;
